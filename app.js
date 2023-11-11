@@ -1,23 +1,48 @@
-let keepInLoop = true 
-const numbers = []
+let correctAnswer = 0
+
+document.querySelector("form").addEventListener('submit', e => {
+  e.preventDefault();
+  userAnswer(Number(e.target.userResult.value))
+})
 
 function createRandomNumber() {
   return Math.round(Math.random() * 10);
 }
 
-while(keepInLoop) {
+function gotItRight(answer) {
+  document.querySelector('#answer').innerText = "Acertou!"
+  document.querySelector('#result').innerText = `Sua resposta ${answer}!`;
+}
+
+function gotItWrong(answer) {
+  document.querySelector('#answer').innerText = "Errou!"
+  document.querySelector('#result').innerText = `Resposta correta ${answer}!`;
+}
+
+function addNumberToScreen(number1, number2) {
+  document.querySelector('#number1').innerText = number1;
+  document.querySelector('#number2').innerText = number2;
+}
+
+function userAnswer(answer) {
+  return answer === correctAnswer ? 
+    gotItRight(correctAnswer) : 
+    gotItWrong(correctAnswer) ;
+}
+
+const numbers = [];
+
+function createMultiplication() {
   const random1 = createRandomNumber()
   const random2 = createRandomNumber()
 
   if(numbers.some(expr => expr === `${random1},${random2}`)) {
-    continue;
+    createMultiplication();
+    return;
   }
-
-  numbers.push(`${random1},${random2}`);
-  const answer = Number(prompt(`${random1} x ${random2} :`));
-
-  console.log(answer === random1 * random2 ? `Acertou! ${answer}`: `Errou! Resposta correta seria: ${random1 * random2}`);
   
-  keepInLoop = confirm("Continuar? ");
-  if(numbers.length === 100) keepInLoop = false;
+  numbers.push(`${random1},${random2}`);
+  addNumberToScreen(random1, random2);
+  correctAnswer = random1 * random2;
 }
+createMultiplication()
