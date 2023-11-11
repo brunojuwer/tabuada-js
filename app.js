@@ -43,6 +43,9 @@ function createMultiplication() {
   
   numbers.push(`${random1},${random2}`);
   addNumberToScreen(random1, random2);
+  document.querySelector('input').focus();
+  document.querySelector('input').value = "";
   correctAnswer = random1 * random2;
 }
 createMultiplication()
+document.querySelector('input').focus();
