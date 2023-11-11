@@ -30,7 +30,8 @@ header {
 }
 
 main {
-  max-width: 900px;
+  max-width: 400px;
+  width: 100%;
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
@@ -39,14 +40,17 @@ main {
 }
 
 form {
+  width: 100%;
   background-color: var(--dark-primary);
   padding: 2rem;
   border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 span {
   color: var(--text-secondary);
-  font-size: 1.8rem;
+  font-size: 3rem;
 }
 
 #times {
@@ -68,9 +72,11 @@ form input:focus {
 button {
   border-radius: 5px;
   padding: 0.25rem;
+  width: 80px;
   cursor: pointer;
   color: var(--text-primary);
   background-color: var(--red-primary);
+  font-size: 2rem;
 }
 
 button:active {
