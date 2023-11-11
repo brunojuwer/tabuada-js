@@ -64,3 +64,37 @@ form input {
 form input:focus {
   outline: none;
 }
+
+button {
+  border-radius: 5px;
+  padding: 0.25rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  background-color: var(--red-primary);
+}
+
+button:active {
+  background-color: var(--green-primary);
+}
+
+section {
+  display: block;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+#answer {
+  color: var(--text-primary);
+}
+
+#result {
+  color: var(--text-primary);
+}
+
+#correct {
+  color: var(--blue-primary);
+  font-size: 1rem;
+}

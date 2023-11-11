@@ -3,6 +3,7 @@ let correctAnswer = 0
 document.querySelector("form").addEventListener('submit', e => {
   e.preventDefault();
   userAnswer(Number(e.target.userResult.value))
+  document.querySelector('section').classList.remove('hidden');
 })
 
 function createRandomNumber() {
@@ -11,12 +12,12 @@ function createRandomNumber() {
 
 function gotItRight(answer) {
   document.querySelector('#answer').innerText = "Acertou!"
-  document.querySelector('#result').innerText = `Sua resposta ${answer}!`;
+  document.querySelector('#result').innerHTML = `Sua resposta <span id="correct">${answer}</span>`;
 }
 
 function gotItWrong(answer) {
   document.querySelector('#answer').innerText = "Errou!"
-  document.querySelector('#result').innerText = `Resposta correta ${answer}!`;
+  document.querySelector('#result').innerHTML = `Resposta correta <span id="correct">${answer}</span>`;
 }
 
 function addNumberToScreen(number1, number2) {
@@ -45,6 +46,7 @@ function createMultiplication() {
   addNumberToScreen(random1, random2);
   document.querySelector('input').focus();
   document.querySelector('input').value = "";
+  document.querySelector('section').classList.add('hidden');
   correctAnswer = random1 * random2;
 }
 createMultiplication()
